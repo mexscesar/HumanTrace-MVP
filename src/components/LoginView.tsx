@@ -70,10 +70,9 @@ export default function LoginView({ onLogin }: LoginViewProps) {
           id="login-card"
         >
           <div className="mb-8 text-center" id="login-card-header">
-            <span className="inline-block px-2.5 py-0.5 rounded text-[10px] uppercase font-mono font-bold tracking-wider bg-[#6D5EF5]/10 text-[#6D5EF5] mb-2">
-              Ano 2036 • O Grande Vazio Digital
-            </span>
-            <h1 className="text-2xl font-semibold tracking-tight text-slate-900 mt-1">Bem-vindo ao HumanTrace</h1>
+            <h1 className="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-[#1a1340] via-[#6D5EF5] to-[#4F46E5] bg-clip-text text-transparent py-1">
+              Bem-vindo ao HumanTrace
+            </h1>
             <p className="text-xs text-slate-500 mt-2.5 leading-relaxed">
               Diferencie seu trabalho em um mundo saturado por IA. Documente seu processo criativo humano e gere certificados verificáveis de autoria.
             </p>
