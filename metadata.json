@@ -1,0 +1,6 @@
+{
+  "name": "HumanTrace",
+  "description": "Plataforma de rastreabilidade criativa que documenta evidências do processo de design e certifica a autoria humana.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
