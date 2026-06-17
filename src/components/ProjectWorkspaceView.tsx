@@ -467,7 +467,7 @@ export default function ProjectWorkspaceView({
       <canvas ref={canvasRef} className="hidden" />
 
       {/* Top Navigation - Premium Purple Theme */}
-      <header className="w-full max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-brand-primary px-6 py-4 rounded-xl text-white shadow-md mb-6 no-print" id="workspace-header">
+      <header className="w-full max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-gradient-to-r from-[#1a1340] via-[#6D5EF5] to-[#0d0926] px-6 py-4 rounded-xl text-white shadow-md mb-6 no-print" id="workspace-header">
         <div className="flex items-center gap-3">
           <button
             id="btn-back-to-dashboard"

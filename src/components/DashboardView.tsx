@@ -70,7 +70,7 @@ export default function DashboardView({
   return (
     <div className="min-h-screen bg-brand-bg flex flex-col p-6 selection:bg-brand-primary/20" id="dashboard-container">
       {/* Navbar - Premium Purple Theme */}
-      <header className="w-full max-w-7xl mx-auto flex items-center justify-between bg-brand-primary px-6 py-4 rounded-xl text-white shadow-md mb-8" id="dashboard-navbar">
+      <header className="w-full max-w-7xl mx-auto flex items-center justify-between bg-gradient-to-r from-[#1a1340] via-[#6D5EF5] to-[#0d0926] px-6 py-4 rounded-xl text-white shadow-md mb-8" id="dashboard-navbar">
         <div className="flex items-center gap-7">
           <div className="flex items-center gap-2 cursor-pointer" id="logo-brand">
             <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-brand-primary">
