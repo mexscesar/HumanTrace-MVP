@@ -40,6 +40,7 @@ export default function DashboardView({
 }: DashboardViewProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [isConfirmingReset, setIsConfirmingReset] = useState(false);
 
   const filteredProjects = projects.filter(project => {
     const matchesSearch = project.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -152,15 +153,38 @@ export default function DashboardView({
             </div>
 
             <div className="flex items-center gap-3">
-              <button 
-                id="btn-reset-seeds"
-                onClick={onResetSeed}
-                title="Recarregar dados demonstrativos originais"
-                className="flex items-center gap-1.5 px-2.5 py-1.5 border border-brand-border hover:bg-brand-surface hover:text-brand-primary rounded-lg text-xs font-mono text-brand-muted transition-colors cursor-pointer"
-              >
-                <RotateCcw className="w-3.5 h-3.5" />
-                <span>Restaurar Seeds</span>
-              </button>
+              {isConfirmingReset ? (
+                <div className="flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 px-3 py-1.5 rounded-lg text-xs font-mono animate-fade-in" id="reset-confirm-box">
+                  <span className="text-amber-700 font-bold">Restaurar padrões?</span>
+                  <button
+                    id="btn-confirm-reset-yes"
+                    onClick={() => {
+                      onResetSeed();
+                      setIsConfirmingReset(false);
+                    }}
+                    className="bg-brand-primary hover:bg-brand-primary-hover text-white font-bold px-2 py-0.5 rounded cursor-pointer transition-colors"
+                  >
+                    Sim
+                  </button>
+                  <button
+                    id="btn-confirm-reset-no"
+                    onClick={() => setIsConfirmingReset(false)}
+                    className="text-brand-muted hover:text-brand-text font-bold px-2 py-0.5 hover:bg-brand-border/40 rounded cursor-pointer transition-colors"
+                  >
+                    Não
+                  </button>
+                </div>
+              ) : (
+                <button 
+                  id="btn-reset-seeds"
+                  onClick={() => setIsConfirmingReset(true)}
+                  title="Recarregar dados demonstrativos originais"
+                  className="flex items-center gap-1.5 px-2.5 py-1.5 border border-brand-border hover:bg-brand-surface hover:text-brand-primary rounded-lg text-xs font-mono text-brand-muted transition-colors cursor-pointer"
+                >
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  <span>Restaurar Seeds</span>
+                </button>
+              )}
             </div>
           </div>
 

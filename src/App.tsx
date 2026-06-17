@@ -92,20 +92,18 @@ export default function App() {
   };
 
   const handleResetSeed = () => {
-    if (window.confirm('Tem certeza de que deseja restaurar as evidências dos projetos padrão? Seus projetos criados manualmente não serão afetados se possuírem IDs exclusivos.')) {
-      // Load standard portfolio items while preserving any user-made items
-      const userMadeProjects = projects.filter(p => !p.id.startsWith('seed-'));
-      const userMadeEvidences = evidences.filter(e => !e.projectId.startsWith('seed-'));
+    // Load standard portfolio items while preserving any user-made items
+    const userMadeProjects = projects.filter(p => !p.id.startsWith('seed-'));
+    const userMadeEvidences = evidences.filter(e => !e.projectId.startsWith('seed-'));
 
-      const mergedProjects = [...SEED_PROJECTS, ...userMadeProjects];
-      const mergedEvidences = [...SEED_EVIDENCES, ...userMadeEvidences];
+    const mergedProjects = [...SEED_PROJECTS, ...userMadeProjects];
+    const mergedEvidences = [...SEED_EVIDENCES, ...userMadeEvidences];
 
-      localStorage.setItem('ht_projects', JSON.stringify(mergedProjects));
-      localStorage.setItem('ht_evidences', JSON.stringify(mergedEvidences));
-      
-      setProjects(mergedProjects);
-      setEvidences(mergedEvidences);
-    }
+    localStorage.setItem('ht_projects', JSON.stringify(mergedProjects));
+    localStorage.setItem('ht_evidences', JSON.stringify(mergedEvidences));
+    
+    setProjects(mergedProjects);
+    setEvidences(mergedEvidences);
   };
 
   const handleCreateProject = (name: string, objective: string, category: string, motivation: string) => {
@@ -146,9 +144,6 @@ export default function App() {
   };
 
   const handleDeleteEvidence = (evidenceId: string) => {
-    if (!window.confirm('Tem certeza de que deseja excluir este registro de processo? O score do projeto será recalculado.')) {
-      return;
-    }
     const updatedEvidences = evidences.filter(e => e.id !== evidenceId);
     localStorage.setItem('ht_evidences', JSON.stringify(updatedEvidences));
     setEvidences(updatedEvidences);

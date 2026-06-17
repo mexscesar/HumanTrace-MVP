@@ -50,6 +50,7 @@ export default function ProjectWorkspaceView({
 }: ProjectWorkspaceViewProps) {
   const [activeTab, setActiveTab] = useState<TabType>('timeline');
   const [isAdding, setIsAdding] = useState(false);
+  const [deletingEvidenceId, setDeletingEvidenceId] = useState<string | null>(null);
   
   // Evidence form state
   const [evidenceType, setEvidenceType] = useState<EvidenceType>('decision');
@@ -719,13 +720,34 @@ export default function ProjectWorkspaceView({
                               </span>
                             </div>
 
-                            <button
-                              onClick={() => onDeleteEvidence(ev.id)}
-                              title="Remover esta evidência"
-                              className="text-brand-muted hover:text-red-500 hover:bg-red-50 p-1 rounded-md transition-colors self-end sm:self-center opacity-0 group-hover:opacity-100 cursor-pointer"
-                            >
-                              <Trash2 className="w-3.5 h-3.5" />
-                            </button>
+                            {deletingEvidenceId === ev.id ? (
+                              <div className="flex items-center gap-1.5 bg-red-50 text-red-700 border border-red-200 px-2.5 py-0.5 rounded text-[10px] font-mono animate-fade-in no-print" id={`delete-confirm-${ev.id}`}>
+                                <span className="font-bold">Remover?</span>
+                                <button
+                                  onClick={() => {
+                                    onDeleteEvidence(ev.id);
+                                    setDeletingEvidenceId(null);
+                                  }}
+                                  className="bg-red-500 hover:bg-red-600 text-white font-bold px-1.5 py-0.5 rounded cursor-pointer transition-colors"
+                                >
+                                  Sim
+                                </button>
+                                <button
+                                  onClick={() => setDeletingEvidenceId(null)}
+                                  className="text-slate-500 hover:text-slate-700 font-bold px-1.5 py-0.5 rounded cursor-pointer hover:bg-slate-100 transition-colors"
+                                >
+                                  Não
+                                </button>
+                              </div>
+                            ) : (
+                              <button
+                                onClick={() => setDeletingEvidenceId(ev.id)}
+                                title="Remover esta evidência"
+                                className="text-brand-muted hover:text-red-500 hover:bg-red-50 p-1 rounded-md transition-colors self-end sm:self-center opacity-0 group-hover:opacity-100 cursor-pointer no-print"
+                              >
+                                <Trash2 className="w-3.5 h-3.5" />
+                              </button>
+                            )}
                           </div>
 
                           {/* Title */}
